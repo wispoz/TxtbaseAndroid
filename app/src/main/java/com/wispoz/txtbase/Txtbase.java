@@ -16,7 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.wispoz.txtbase.views.CalendarFragment;
+import com.wispoz.txtbase.views.competitions.Competition;
 
 public class Txtbase extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -87,7 +87,7 @@ public class Txtbase extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            fragment = new CalendarFragment();
+            fragment = new Competition();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.mainFrame, fragment);
             ft.commit();
