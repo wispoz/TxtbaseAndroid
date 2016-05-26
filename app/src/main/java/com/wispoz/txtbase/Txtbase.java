@@ -3,6 +3,8 @@ package com.wispoz.txtbase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.wispoz.txtbase.views.CalendarFragment;
 
 public class Txtbase extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -78,18 +83,25 @@ public class Txtbase extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        Fragment fragment;
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
+            fragment = new CalendarFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.mainFrame, fragment);
+            ft.commit();
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+            Toast.makeText(getApplicationContext(), "Вы выбрали камеру", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_slideshow) {
+            Toast.makeText(getApplicationContext(), "Вы nav_slideshow камеру", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_manage) {
-
+            Toast.makeText(getApplicationContext(), "Вы nav_manage камеру", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_share) {
-
+            Toast.makeText(getApplicationContext(), "Вы nav_send камеру", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_send) {
 
         }
