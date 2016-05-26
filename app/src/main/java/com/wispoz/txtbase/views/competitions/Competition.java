@@ -18,3 +18,7 @@ public class Competition extends Fragment {
         return view;
     }
 }
+/**
+tets
+*/
+
