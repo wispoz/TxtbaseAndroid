@@ -5,6 +5,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,17 +18,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.wispoz.txtbase.views.competitions.Competition;
+import com.wispoz.txtbase.views.competitions.CompetitionView;
+import com.wispoz.txtbase.models.Competition;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Txtbase extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    private List<Competition> competitions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_txtbase);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        RecyclerView rv = (RecyclerView)findViewById(R.id.rv);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +95,7 @@ public class Txtbase extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            fragment = new Competition();
+            fragment = new CompetitionView();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.mainFrame, fragment);
             ft.commit();
@@ -109,5 +117,17 @@ public class Txtbase extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void initializeData() {
+        competitions = new ArrayList<>();
+        for(int i = 0; i<25; i++ ) {
+            competitions.add(new Competition(i,"Чемпионат России","31-01-2016",i));
+
+        }
+    }
+    private void initializeAdapter(){
+                RVAdapter adapter = new RVAdapter(competitions);
+        	        rv.setAdapter(adapter);
     }
 }

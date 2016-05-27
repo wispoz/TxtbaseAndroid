@@ -11,7 +11,7 @@ import com.wispoz.txtbase.R;
 /**
  * Created by wispoz on 26.05.16.
  */
-public class Competition extends Fragment {
+public class CompetitionView extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.calendar, container, false);
