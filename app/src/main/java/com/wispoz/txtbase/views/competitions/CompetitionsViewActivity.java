@@ -16,7 +16,7 @@ public class CompetitionsViewActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
      super.onCreate(savedInstanceState);
-        setContentView(R.layout.);
+        setContentView(R.layout.competition_item);
         	        name = (TextView)findViewById(R.id.name);
         	        date = (TextView)findViewById(R.id.date);
        }

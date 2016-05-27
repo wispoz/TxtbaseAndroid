@@ -18,23 +18,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.wispoz.txtbase.adapters.CompetitionAdapter;
 import com.wispoz.txtbase.views.competitions.CompetitionView;
 import com.wispoz.txtbase.models.Competition;
+import com.wispoz.txtbase.views.dancers.DancersView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Txtbase extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private List<Competition> competitions;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_txtbase);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        RecyclerView rv = (RecyclerView)findViewById(R.id.rv);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        rv.setLayoutManager(llm);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +102,10 @@ public class Txtbase extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
             Toast.makeText(getApplicationContext(), "Вы выбрали камеру", Toast.LENGTH_SHORT).show();
-
+            fragment = new DancersView();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.mainFrame, fragment);
+            ft.commit();
         } else if (id == R.id.nav_slideshow) {
             Toast.makeText(getApplicationContext(), "Вы nav_slideshow камеру", Toast.LENGTH_SHORT).show();
 
@@ -119,15 +122,5 @@ public class Txtbase extends AppCompatActivity
         return true;
     }
 
-    private void initializeData() {
-        competitions = new ArrayList<>();
-        for(int i = 0; i<25; i++ ) {
-            competitions.add(new Competition(i,"Чемпионат России","31-01-2016",i));
 
-        }
-    }
-    private void initializeAdapter(){
-                RVAdapter adapter = new RVAdapter(competitions);
-        	        rv.setAdapter(adapter);
-    }
 }
