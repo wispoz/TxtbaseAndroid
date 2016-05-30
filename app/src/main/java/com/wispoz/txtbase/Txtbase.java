@@ -107,7 +107,7 @@ public class Txtbase extends AppCompatActivity
             ft.replace(R.id.mainFrame, fragment);
             ft.commit();
         } else if (id == R.id.nav_slideshow) {
-            Toast.makeText(getApplicationContext(), "Вы nav_slideshow камеру", Toast.LENGTH_SHORT).show();
+        //    setContentView(R.layout.competitions);
 
         } else if (id == R.id.nav_manage) {
             Toast.makeText(getApplicationContext(), "Вы nav_manage камеру", Toast.LENGTH_SHORT).show();

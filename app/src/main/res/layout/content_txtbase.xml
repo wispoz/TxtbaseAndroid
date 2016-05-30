@@ -13,8 +13,9 @@
     tools:showIn="@layout/app_bar_txtbase">
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" android:id="@+id/mainFrame">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" android:id="@+id/mainFrame"
+        android:layout_alignParentTop="true">
     </FrameLayout>
 
 
