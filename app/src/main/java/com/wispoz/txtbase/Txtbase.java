@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.wispoz.txtbase.adapters.CompetitionAdapter;
+import com.wispoz.txtbase.views.calculator.CalculatorView;
 import com.wispoz.txtbase.views.competitions.CompetitionView;
 import com.wispoz.txtbase.models.Competition;
 import com.wispoz.txtbase.views.dancers.DancersView;
@@ -110,6 +111,10 @@ public class Txtbase extends AppCompatActivity
         //    setContentView(R.layout.competitions);
 
         } else if (id == R.id.nav_manage) {
+            fragment = new CalculatorView();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.mainFrame, fragment);
+            ft.commit();
             Toast.makeText(getApplicationContext(), "Вы nav_manage камеру", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_share) {
             Toast.makeText(getApplicationContext(), "Вы nav_send камеру", Toast.LENGTH_SHORT).show();
